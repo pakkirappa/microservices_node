@@ -10,8 +10,7 @@ export default function PostList() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/posts");
-        console.log(response.data);
+        const response = await axios.get("http://localhost:4002/posts");
         setPosts(response.data);
       } catch (error) {
         console.error("Error fetching posts:", error);
@@ -28,7 +27,8 @@ export default function PostList() {
           <h5 className="card-title text-primary">{value.title}</h5>
           <hr />
           <CommentCreate postId={key} />
-          <CommentList postId={key} />
+          {/* <CommentList postId={key} /> */}
+          <CommentList comments={value.comments} />
         </div>
       </div>
     );
